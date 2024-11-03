@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecurringFlow: Service Package Conversion Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #64748b;
+            --background: #f8fafc;
+            --text: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <style>
+            .header {
+                text-align: center;
+                margin-bottom: 4rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                color: var(--primary);
+                margin-bottom: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+                color: var(--text);
+                margin-bottom: 1.5rem;
+            }
+
+            .problem-solution {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .card {
+                background: var(--background);
+                padding: 1.5rem;
+                border-radius: 8px;
+            }
+
+            .card h3 {
+                color: var(--primary);
+                margin-bottom: 1rem;
+            }
+
+            .metrics {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .metric-card {
+                background: white;
+                padding: 1.5rem;
+                border-radius: 8px;
+                text-align: center;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .metric-value {
+                font-size: 2rem;
+                font-weight: bold;
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+            }
+
+            .chart-container {
+                height: 300px;
+                margin: 2rem 0;
+                padding: 1rem;
+                background: white;
+                border-radius: 8px;
+            }
+
+            .table-container {
+                overflow-x: auto;
+                margin: 2rem 0;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 1rem;
+                text-align: left;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            th {
+                background: var(--background);
+                font-weight: 600;
+            }
+
+            @media (max-width: 768px) {
+                .problem-solution {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 style="color: #1a365d;">RecurringFlow</h1>
+            <p style="color: #2d3748; font-size: 1.2rem; margin-bottom: 0.5rem;">Service Package Conversion Platform</p>
+        </header>
+
+        <section class="section">
+            <h2 style="color: #1a365d; text-align: center;">The Opportunity</h2>
+            <div class="problem-solution" style="margin-bottom: 2rem;">
+                <div class="card" style="background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <h3 style="color: #2563eb;">Current Challenge</h3>
+                    <p style="color: #2d3748; margin-bottom: 1.5rem;">Home service businesses excel at winning one-time jobs but struggle to convert these into recurring revenue. Current software solutions miss the critical moment of initial conversion.</p>
+                    <div class="metric-card">
+                        <div class="metric-value" style="color: #2563eb;">$500</div>
+                        <p style="color: #2d3748;">Average One-Time Job</p>
+                    </div>
+                </div>
+                <div class="card" style="background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <h3 style="color: #2563eb;">Our Solution</h3>
+                    <p style="color: #2d3748; margin-bottom: 1.5rem;">A dynamic proposal generation tool that instantly transforms standard estimates into comprehensive service packages.</p>
+                    <div class="metric-card">
+                        <div class="metric-value" style="color: #2563eb;">$2,000</div>
+                        <p style="color: #2d3748;">Average Annual Package Value</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 style="color: #1a365d; text-align: center;">Market Impact</h2>
+            <div class="chart-container">
+                <canvas id="conversionChart"></canvas>
+            </div>
+            <div class="metrics" style="grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                <div class="metric-card" style="background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <div class="metric-value" style="color: #2563eb;">10-15%</div>
+                    <p style="color: #2d3748;">Conversion Rate</p>
+                </div>
+                <div class="metric-card" style="background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <div class="metric-value" style="color: #2563eb;">$36M+</div>
+                    <p style="color: #2d3748;">Additional Annual Revenue</p>
+                </div>
+                <div class="metric-card" style="background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <div class="metric-value" style="color: #2563eb;">$600K+</div>
+                    <p style="color: #2d3748;">Processing Revenue</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 style="color: #1a365d;">Key Features</h2>
+            <div class="metrics">
+                <div class="metric-card">
+                    <h3 style="color: #2563eb; font-size: 1.2rem;">Custom Package Builder</h3>
+                    <p style="color: #2d3748;">Instantly transform estimates into comprehensive service packages</p>
+                </div>
+                <div class="metric-card">
+                    <h3 style="color: #2563eb; font-size: 1.2rem;">Real-time Generation</h3>
+                    <p style="color: #2d3748;">Professional proposals created in minutes</p>
+                </div>
+                <div class="metric-card">
+                    <h3 style="color: #2563eb; font-size: 1.2rem;">Flexible Payments</h3>
+                    <p style="color: #2d3748;">Monthly, quarterly, or annual payment options</p>
+                </div>
+                <div class="metric-card">
+                    <h3 style="color: #2563eb; font-size: 1.2rem;">Visual Timeline</h3>
+                    <p style="color: #2d3748;">Clear service distribution throughout the year</p>
+                </div>
+            </div>
+        </section>
+  <section class="section">
+            <h2 style="color: #1a365d;">Value Proposition</h2>
+            <div class="card" style="margin-bottom: 2rem;">
+                <h3 style="color: #2563eb;">Acquisition Value</h3>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #2563eb;">$25M-60M</div>
+                    <p style="color: #2d3748;">Base Price</p>
+                </div>
+                <div style="margin-top: 1rem; color: #2d3748;">
+                    <p>+ 0.5% processed payments</p>
+                    <p>+ 10% premium tier subscriptions</p>
+                    <p>+ Annual licensing fees</p>
+                </div>
+            </div>
+            
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #2563eb;">$500M+</div>
+                    <p style="color: #2d3748;">Platform Value Increase</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #2563eb;">100K+</div>
+                    <p style="color: #2d3748;">Service Professionals</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 style="color: #1a365d;">Development Status</h2>
+            <div class="metrics">
+                <div class="metric-card">
+                    <h3 style="color: #2563eb;">Core Functionality</h3>
+                    <p style="color: #2d3748;">Developed & Tested</p>
+                </div>
+                <div class="metric-card">
+                    <h3 style="color: #2563eb;">Integration Ready</h3>
+                    <p style="color: #2d3748;">Architecture Planning</p>
+                </div>
+                <div class="metric-card">
+                    <h3 style="color: #2563eb;">Beta Testing</h3>
+                    <p style="color: #2d3748;">Ready for Partners</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Initialize Chart.js
+        const ctx = document.getElementById('conversionChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Current', 'With RecurringFlow'],
+                datasets: [{
+                    label: 'Annual Revenue Per Customer',
+                    data: [500, 2000],
+                    backgroundColor: ['#64748b', '#2563eb'],
+                    borderColor: ['#64748b', '#2563eb'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value;
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
